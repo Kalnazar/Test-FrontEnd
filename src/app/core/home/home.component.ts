@@ -3,18 +3,19 @@ import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Specialist } from '../../shared/specialist.interface';
 import { SpecialistService } from '../../shared/specialist.service';
-import { SpecialistViewComponent } from '../specialist/specialist-view/specialist-view.component';
 import { RouterModule } from '@angular/router';
+import { SpecialistDetailsComponent } from '../specialist/specialist-details/specialist-details.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, SpecialistViewComponent, RouterModule],
+  imports: [CommonModule, RouterModule, SpecialistDetailsComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent {
-  specialists: Specialist[] = [];
+  public specialists: Specialist[] = [];
+  public selectedSpecialist?: Specialist;
 
   constructor(private specialistService: SpecialistService) {}
 
@@ -31,6 +32,20 @@ export class HomeComponent {
         alert(error.message);
       }
     );
+  }
+
+  public onOpenModal(employee: Specialist): void {
+    this.selectedSpecialist = employee;
+
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+
+    button.setAttribute('data-bs-target', '#specialistDetailsModal');
+    container?.appendChild(button);
+    button.click();
   }
 
   public logout() {

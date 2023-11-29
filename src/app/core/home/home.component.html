@@ -30,12 +30,31 @@
 </nav>
 
 <div class="container">
-  <div class="">
-    @for (concreteSpecialist of specialists; track $index) {
+  <div id="main-container">
+    @for (specialist of specialists; track $index) {
     <div class="mb-3">
-      <app-specialist-view
-        [specialist]="concreteSpecialist"
-      ></app-specialist-view>
+      <div class="card p-2">
+        <div class="card-body row">
+          <div class="col-md-8 col-sm-7">
+            <h5 class="card-title">{{ specialist.fullName }}</h5>
+            <p class="card-text">{{ specialist.education }}</p>
+          </div>
+          <div
+            class="col-md-4 col-sm-5 d-flex align-items-center justify-content-end"
+          >
+            <button
+              class="btn btn-outline-primary"
+              (click)="onOpenModal(specialist)"
+            >
+              View More
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Specialist Details Modal -->
+      <app-specialist-details
+        [specialist]="selectedSpecialist"
+      ></app-specialist-details>
     </div>
     }
   </div>

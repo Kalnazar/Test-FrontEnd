@@ -7,8 +7,7 @@ import { Specialist } from '../../../shared/specialist.interface';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './specialist-details.component.html',
-  styleUrl: './specialist-details.component.css',
 })
 export class SpecialistDetailsComponent {
-  @Input() details!: Specialist;
+  @Input() specialist?: Specialist;
 }

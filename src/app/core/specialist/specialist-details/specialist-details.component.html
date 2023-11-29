@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="specialistDetailsModalLabel">
-          {{ details.fullName }}
+          {{ specialist?.fullName }}
         </h5>
         <button
           type="button"
@@ -17,27 +17,29 @@
           <div class="specialist-details">
             <p class="detail-item">
               <span class="detail-label">Phone Number:</span>
-              <span class="detail-value">{{ details.phoneNumber }}</span>
+              <span class="detail-value">{{ specialist?.phoneNumber }}</span>
             </p>
-            @if (details.dateOfBirth) {
+            @if (specialist?.dateOfBirth) {
             <p class="detail-item">
               <span class="detail-label">Date of Birth:</span>
               <span class="detail-value">{{
-                details.dateOfBirth | date : "longDate"
+                specialist?.dateOfBirth | date : "longDate"
               }}</span>
             </p>
             }
             <p class="detail-item">
               <span class="detail-label">Education:</span>
-              <span class="detail-value">{{ details.education }}</span>
+              <span class="detail-value">{{ specialist?.education }}</span>
             </p>
             <p class="detail-item">
               <span class="detail-label">Email:</span>
-              <span class="detail-value">{{ details.email }}</span>
+              <span class="detail-value">{{ specialist?.email }}</span>
             </p>
             <p class="detail-item">
               <span class="detail-label">Professional Skills:</span>
-              <span class="detail-value">{{ details.professionalSkills }}</span>
+              <span class="detail-value">{{
+                specialist?.professionalSkills
+              }}</span>
             </p>
           </div>
         </div>
