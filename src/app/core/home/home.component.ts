@@ -4,14 +4,19 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Specialist } from '../../shared/specialist.interface';
 import { SpecialistService } from '../../shared/specialist.service';
 import { RouterModule } from '@angular/router';
-import { SpecialistDetailsComponent } from '../specialist/specialist-details/specialist-details.component';
+import { SpecialistDetailsComponent } from '../specialist-details/specialist-details.component';
+import { SpecialistEditComponent } from '../specialist-edit/specialist-edit.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterModule, SpecialistDetailsComponent],
+  imports: [
+    CommonModule,
+    RouterModule,
+    SpecialistDetailsComponent,
+    SpecialistEditComponent,
+  ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
 })
 export class HomeComponent {
   public specialists: Specialist[] = [];
@@ -44,6 +49,19 @@ export class HomeComponent {
     button.setAttribute('data-bs-toggle', 'modal');
 
     button.setAttribute('data-bs-target', '#specialistDetailsModal');
+    container?.appendChild(button);
+    button.click();
+  }
+
+  public onOpenEditModal(): void {
+    const container = document.getElementById('navbarNav');
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+
+    button.setAttribute('data-bs-target', '#updateSpecialistModal');
     container?.appendChild(button);
     button.click();
   }

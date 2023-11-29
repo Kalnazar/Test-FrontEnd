@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Specialist } from '../../../shared/specialist.interface';
+import { Specialist } from '../../shared/specialist.interface';
 
 @Component({
   selector: 'app-specialist-details',

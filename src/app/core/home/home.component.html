@@ -16,7 +16,12 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto"></ul>
       <form class="d-flex">
-        <button class="btn btn-primary me-2" type="submit">Edit</button>
+        <button
+          class="btn btn-primary me-2"
+          (click)="$event.preventDefault(); onOpenEditModal()"
+        >
+          Edit
+        </button>
         <button
           class="btn btn-outline-secondary"
           type="submit"
@@ -27,6 +32,8 @@
       </form>
     </div>
   </div>
+  <!-- Specialist Update Modal -->
+  <app-specialist-edit></app-specialist-edit>
 </nav>
 
 <div class="container">

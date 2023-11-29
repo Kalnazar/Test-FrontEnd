@@ -15,7 +15,6 @@ import { Specialist } from '../../../shared/specialist.interface';
   standalone: true,
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.css',
 })
 export class RegisterComponent {
   public registerForm = new FormGroup({
