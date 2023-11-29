@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {
   FormControl,
   FormGroup,
@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Specialist } from '../../../shared/specialist.interface';
 import { SpecialistService } from '../../../shared/specialist.service';
+import { SpecialistLogin } from '../../../shared/specialistLogin.interface';
 
 @Component({
   selector: 'app-login',
@@ -26,13 +27,36 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private specialistService: SpecialistService) {}
+  constructor(
+    private specialistService: SpecialistService,
+    private router: Router
+  ) {}
 
   submitForm() {
     const formValue = this.loginForm.getRawValue();
-    const specialistLogin = {
-      email: formValue.senderEmail,
-      password: formValue.senderPassword,
+    const specialistLogin: SpecialistLogin = {
+      email: formValue.senderEmail!,
+      password: formValue.senderPassword!,
     };
+
+    this.specialistService.loginSpecialist(specialistLogin).subscribe({
+      next: (response) => {
+        localStorage.setItem('email', specialistLogin.email);
+        this.specialistService
+          .getSpecialistByEmail(specialistLogin.email)
+          .subscribe({
+            next: (response) => {
+              this.specialistService.currentUserSig.set(response);
+            },
+            error: (error) => {
+              console.error(error);
+            },
+          });
+        this.router.navigateByUrl('/');
+      },
+      error: (error) => {
+        console.error('Error during registration', error);
+      },
+    });
   }
 }

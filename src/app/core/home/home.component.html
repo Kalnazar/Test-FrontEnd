@@ -16,7 +16,14 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav me-auto"></ul>
       <form class="d-flex">
-        <button class="btn btn-primary" type="submit">Profile</button>
+        <button class="btn btn-primary me-2" type="submit">Profile</button>
+        <button
+          class="btn btn-outline-secondary"
+          type="submit"
+          (click)="logout()"
+        >
+          Logout
+        </button>
       </form>
     </div>
   </div>

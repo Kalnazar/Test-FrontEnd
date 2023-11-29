@@ -54,7 +54,6 @@ export class RegisterComponent {
         localStorage.setItem('email', response.email);
         this.specialistService.currentUserSig.set(response);
         this.router.navigateByUrl('/');
-        console.log('Specialist registered successfully', response);
       },
       error: (error) => {
         console.error('Error during registration', error);
