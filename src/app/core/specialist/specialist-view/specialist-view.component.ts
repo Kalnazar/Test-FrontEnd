@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Specialist } from '../../shared/specialist.interface';
+import { Specialist } from '../../../shared/specialist.interface';
 import { SpecialistDetailsComponent } from '../specialist-details/specialist-details.component';
-import { SpecialistService } from '../../shared/specialist.service';
 
 @Component({
   selector: 'app-specialist-view',
@@ -13,7 +12,7 @@ import { SpecialistService } from '../../shared/specialist.service';
 })
 export class SpecialistViewComponent {
   @Input() specialist!: Specialist;
-  public selectedSpecialist?: Specialist;
+  public selectedSpecialist: Specialist = this.specialist;
 
   public loadSpecialistDetails(specialist: Specialist) {
     this.selectedSpecialist = specialist;

@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form
+        class="mt-5"
+        [formGroup]="registerForm"
+        (ngSubmit)="$event.preventDefault(); submitForm()"
+      >
+        <h1>Tech Task</h1>
+        <div class="form-group">
+          <label>Full name</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter full name"
+            formControlName="sendFullName"
+          />
+        </div>
+        <div *ngIf="registerForm.get('sendFullName')?.touched">
+          <small
+            class="text-danger"
+            *ngIf="registerForm.get('sendFullName')?.hasError('required')"
+            >This field is required.</small
+          >
+        </div>
+        <div class="form-group mt-3">
+          <label for="inputEmail">Email address</label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter email"
+            formControlName="senderEmail"
+          />
+        </div>
+        <div class="form-group">
+          <label for="education">Education</label>
+          <input
+            type="text"
+            class="form-control"
+            id="education"
+            placeholder="Enter education"
+            formControlName="sendEducation"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label class="d-block" for="occupation">Occupation</label>
+          <select formControlName="sendOccupation">
+            <option value="Front-end Developer">Front-end Developer</option>
+            <option value="Back-end Developer">Back-end Developer</option>
+          </select>
+        </div>
+        <div class="form-group mt-3">
+          <label for="inputPassword">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            formControlName="sendPassword"
+          />
+        </div>
+        <div *ngIf="registerForm.get('sendPassword')?.touched">
+          <small
+            class="text-danger"
+            *ngIf="registerForm.get('sendPassword')?.hasError('minLength')"
+            >The password has to be at least 6 characters.</small
+          >
+        </div>
+        <div class="form-group d-flex align-items-center mt-3">
+          <button
+            type="submit"
+            [disabled]="registerForm.invalid"
+            class="btn btn-primary"
+          >
+            Register
+          </button>
+          <a routerLink="/login" class="ms-2">Already have an account?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

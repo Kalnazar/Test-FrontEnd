@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Specialist } from '../../shared/specialist.interface';
+import { Specialist } from '../../../shared/specialist.interface';
 
 @Component({
   selector: 'app-specialist-details',
@@ -9,10 +9,6 @@ import { Specialist } from '../../shared/specialist.interface';
   templateUrl: './specialist-details.component.html',
   styleUrl: './specialist-details.component.css',
 })
-export class SpecialistDetailsComponent implements OnInit {
+export class SpecialistDetailsComponent {
   @Input() details!: Specialist;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

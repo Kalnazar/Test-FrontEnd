@@ -21,15 +21,5 @@
 
 <!-- Specialist Details Modal -->
 @if (selectedSpecialist) {
-<div
-  class="modal fade"
-  id="specialistDetailsModal"
-  tabindex="-1"
-  aria-labelledby="specialistDetailsModalLabel"
-  aria-hidden="true"
->
-  <app-specialist-details
-    [details]="selectedSpecialist"
-  ></app-specialist-details>
-</div>
+<app-specialist-details [details]="selectedSpecialist"></app-specialist-details>
 }

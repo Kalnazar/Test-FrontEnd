@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form
+        class="mt-5"
+        [formGroup]="loginForm"
+        (ngSubmit)="$event.preventDefault(); submitForm()"
+      >
+        <h1>Tech Task</h1>
+        <div class="form-group">
+          <label>Email address</label>
+          <input
+            formControlName="senderEmail"
+            type="email"
+            class="form-control"
+            placeholder="Enter email"
+          />
+        </div>
+        <div class="form-group mt-3">
+          <label>Password</label>
+          <input
+            formControlName="senderPassword"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+          />
+        </div>
+        <div class="form-group d-flex align-items-center mt-3">
+          <button
+            type="submit"
+            [disabled]="loginForm.invalid"
+            class="btn btn-primary"
+          >
+            Login
+          </button>
+          <a routerLink="/register" class="ms-2">You don't have an account?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

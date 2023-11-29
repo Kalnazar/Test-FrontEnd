@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { Specialist } from './specialist.interface';
 import { Observable } from 'rxjs';
 
@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SpecialistService {
   private apiServerUrl = 'http://localhost:8080/api';
+  currentUserSig = signal<Specialist | undefined | null>(undefined);
 
   constructor(private http: HttpClient) {}
 

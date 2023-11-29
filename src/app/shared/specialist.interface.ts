@@ -1,11 +1,11 @@
 export interface Specialist {
   fullName: string;
   email: string;
-  dateOfBirth: Date;
-  location: string;
+  dateOfBirth: Date | null;
+  location: string | null;
   education: string;
-  occupation: string;
-  professionalSkills: string[];
-  phoneNumber: string;
+  occupation: string | null;
+  professionalSkills: string[] | null;
+  phoneNumber: string | null;
   password: String;
 }
