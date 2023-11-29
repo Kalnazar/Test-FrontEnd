@@ -33,5 +33,8 @@ export class HomeComponent {
     );
   }
 
-  public logout() {}
+  public logout() {
+    localStorage.setItem('email', '');
+    this.specialistService.currentUserSig.set(null);
+  }
 }

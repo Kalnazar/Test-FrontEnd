@@ -12,7 +12,14 @@ export class AuthGuardHelper {
   ) {}
 
   canActivate(): boolean {
+    const email = localStorage.getItem('email');
+
     const currentUser = this.specialistService.currentUserSig();
+    console.log(email);
+
+    if (email) {
+      return true;
+    }
     if (currentUser) {
       return true;
     }
