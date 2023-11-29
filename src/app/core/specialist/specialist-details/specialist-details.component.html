@@ -15,32 +15,44 @@
       <div class="modal-body">
         <div class="modal-body">
           <div class="specialist-details">
+            @if (specialist?.phoneNumber) {
             <p class="detail-item">
-              <span class="detail-label">Phone Number:</span>
+              <span class="detail-label">Phone Number: </span>
               <span class="detail-value">{{ specialist?.phoneNumber }}</span>
             </p>
-            @if (specialist?.dateOfBirth) {
+            } @if (specialist?.dateOfBirth) {
             <p class="detail-item">
-              <span class="detail-label">Date of Birth:</span>
+              <span class="detail-label">Date of Birth: </span>
               <span class="detail-value">{{
                 specialist?.dateOfBirth | date : "longDate"
               }}</span>
             </p>
             }
             <p class="detail-item">
-              <span class="detail-label">Education:</span>
+              <span class="detail-label">Education: </span>
               <span class="detail-value">{{ specialist?.education }}</span>
             </p>
             <p class="detail-item">
-              <span class="detail-label">Email:</span>
-              <span class="detail-value">{{ specialist?.email }}</span>
+              <span class="detail-label">Occupation: </span>
+              <span class="detail-value">{{ specialist?.occupation }}</span>
             </p>
             <p class="detail-item">
-              <span class="detail-label">Professional Skills:</span>
-              <span class="detail-value">{{
-                specialist?.professionalSkills
-              }}</span>
+              <span class="detail-label">Email: </span>
+              <span class="detail-value">{{ specialist?.email }}</span>
             </p>
+            @if (specialist?.professionalSkills!.length > 0) {
+            <p class="detail-item">
+              <span class="detail-label d-block mb-1"
+                >Professional Skills:
+              </span>
+              @for (skill of specialist?.professionalSkills; track $index) {
+              <span
+                class="detail-value border border-secondary rounded me-2 p-1"
+                >{{ skill }}</span
+              >
+              }
+            </p>
+            }
           </div>
         </div>
       </div>
