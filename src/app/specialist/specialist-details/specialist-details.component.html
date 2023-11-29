@@ -1,0 +1,50 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="specialistDetailsModalLabel">
+        {{ details.fullName }}
+      </h5>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="modal"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body">
+        <div class="specialist-details">
+          <p class="detail-item">
+            <span class="detail-label">Phone Number:</span>
+            <span class="detail-value">{{ details.phoneNumber }}</span>
+          </p>
+          @if (details.dateOfBirth) {
+          <p class="detail-item">
+            <span class="detail-label">Date of Birth:</span>
+            <span class="detail-value">{{
+              details.dateOfBirth | date : "longDate"
+            }}</span>
+          </p>
+          }
+          <p class="detail-item">
+            <span class="detail-label">Education:</span>
+            <span class="detail-value">{{ details.education }}</span>
+          </p>
+          <p class="detail-item">
+            <span class="detail-label">Email:</span>
+            <span class="detail-value">{{ details.email }}</span>
+          </p>
+          <p class="detail-item">
+            <span class="detail-label">Professional Skills:</span>
+            <span class="detail-value">{{ details.professionalSkills }}</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        Close
+      </button>
+    </div>
+  </div>
+</div>

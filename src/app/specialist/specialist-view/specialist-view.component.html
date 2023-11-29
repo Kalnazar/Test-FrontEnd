@@ -1,0 +1,35 @@
+<div class="card p-2">
+  <div class="card-body row">
+    <div class="col-md-8 col-sm-7">
+      <h5 class="card-title">{{ specialist.fullName }}</h5>
+      <p class="card-text">{{ specialist.education }}</p>
+    </div>
+    <div
+      class="col-md-4 col-sm-5 d-flex align-items-center justify-content-end"
+    >
+      <button
+        class="btn btn-outline-primary"
+        data-bs-toggle="modal"
+        data-bs-target="#specialistDetailsModal"
+        (click)="loadSpecialistDetails(specialist)"
+      >
+        View More
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Specialist Details Modal -->
+@if (selectedSpecialist) {
+<div
+  class="modal fade"
+  id="specialistDetailsModal"
+  tabindex="-1"
+  aria-labelledby="specialistDetailsModalLabel"
+  aria-hidden="true"
+>
+  <app-specialist-details
+    [details]="selectedSpecialist"
+  ></app-specialist-details>
+</div>
+}
