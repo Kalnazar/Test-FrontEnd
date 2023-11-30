@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
-import { Specialist } from './specialist.interface';
+import { Specialist } from './models/specialist.interface';
 import { Observable } from 'rxjs';
-import { SpecialistLogin } from './specialistLogin.interface';
+import { SpecialistLogin } from './models/specialistLogin.interface';
+import { SpecialistRegister } from './models/specialistRegister.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +31,9 @@ export class SpecialistService {
     return this.http.get<Specialist>(`${this.apiServerUrl}/find/${email}`);
   }
 
-  public saveSpecialist(specialist: Specialist): Observable<Specialist> {
+  public saveSpecialist(
+    specialist: SpecialistRegister
+  ): Observable<Specialist> {
     return this.http.post<Specialist>(
       `${this.apiServerUrl}/register`,
       specialist
@@ -41,9 +44,9 @@ export class SpecialistService {
     return this.http.put<Specialist>(`${this.apiServerUrl}/update`, specialist);
   }
 
-  public deleteSpecialist(specialistId: number): Observable<void> {
+  public deleteSpecialist(specialistEmail: string): Observable<void> {
     return this.http.delete<void>(
-      `${this.apiServerUrl}/delete/${specialistId}`
+      `${this.apiServerUrl}/delete/${specialistEmail}`
     );
   }
 }

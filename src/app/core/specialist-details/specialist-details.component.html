@@ -36,6 +36,12 @@
               <span class="detail-label">Occupation: </span>
               <span class="detail-value">{{ specialist?.occupation }}</span>
             </p>
+            @if (specialist?.location) {
+            <p class="detail-item">
+              <span class="detail-label">Location: </span>
+              <span class="detail-value">{{ specialist?.location }}</span>
+            </p>
+            }
             <p class="detail-item">
               <span class="detail-label">Email: </span>
               <span class="detail-value">{{ specialist?.email }}</span>

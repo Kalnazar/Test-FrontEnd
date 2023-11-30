@@ -7,12 +7,10 @@
         </h5>
         <button
           type="button"
-          class="close"
-          data-dismiss="modal"
+          class="btn-close"
+          data-bs-dismiss="modal"
           aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
+        ></button>
       </div>
       <div class="modal-body">
         <form
@@ -22,50 +20,65 @@
           <div class="form-group">
             <label>Full name</label>
             <input
+              ngModel="{{ editSpecialist?.fullName }}"
               type="text"
               class="form-control"
               placeholder="Enter full name"
-              formControlName="sendFullName"
+              formControlName="senderFullName"
             />
           </div>
-          <div *ngIf="editForm.get('sendFullName')?.touched">
-            <small
-              class="text-danger"
-              *ngIf="editForm.get('sendFullName')?.hasError('required')"
-              >This field is required.</small
-            >
-          </div>
-          <div class="form-group mt-3">
-            <label for="inputEmail">Email address</label>
+          <div class="form-group">
+            <label for="education">Date of birth</label>
             <input
-              type="email"
+              type="date"
               class="form-control"
-              placeholder="Enter email"
-              formControlName="senderEmail"
+              formControlName="senderDate"
             />
           </div>
           <div class="form-group">
             <label for="education">Education</label>
             <input
+              ngModel="{{ editSpecialist?.education }}"
               type="text"
               class="form-control"
-              id="education"
               placeholder="Enter education"
-              formControlName="sendEducation"
+              formControlName="senderEducation"
+            />
+          </div>
+          <div class="form-group">
+            <label>Location</label>
+            <input
+              ngModel="{{ editSpecialist?.location }}"
+              type="text"
+              class="form-control"
+              placeholder="Enter your country"
+              formControlName="senderLocation"
             />
           </div>
           <div class="form-group mt-3">
             <label class="d-block" for="occupation">Occupation</label>
-            <select formControlName="sendOccupation">
-              <option value="Front-end Developer">Front-end Developer</option>
+            <select formControlName="senderOccupation">
+              <option value="Front-end Developer" selected="selected">
+                Front-end Developer
+              </option>
               <option value="Back-end Developer">Back-end Developer</option>
             </select>
+          </div>
+          <div class="form-group">
+            <label>Phone number</label>
+            <input
+              ngModel="{{ editSpecialist?.phoneNumber }}"
+              type="tel"
+              class="form-control"
+              placeholder="Enter phone number"
+              formControlName="senderPhoneNumber"
+            />
           </div>
           <div class="form-group d-flex align-items-center mt-3">
             <button
               type="submit"
-              [disabled]="editForm.invalid"
               class="btn btn-primary"
+              data-bs-dismiss="modal"
             >
               Edit
             </button>

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Specialist } from '../../shared/specialist.interface';
+import { Specialist } from '../../shared/models/specialist.interface';
 import { SpecialistService } from '../../shared/specialist.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SpecialistDetailsComponent } from '../specialist-details/specialist-details.component';
 import { SpecialistEditComponent } from '../specialist-edit/specialist-edit.component';
 
@@ -22,7 +22,10 @@ export class HomeComponent {
   public specialists: Specialist[] = [];
   public selectedSpecialist?: Specialist;
 
-  constructor(private specialistService: SpecialistService) {}
+  constructor(
+    private specialistService: SpecialistService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getEmployees();
@@ -66,8 +69,28 @@ export class HomeComponent {
     button.click();
   }
 
+  refreshSpecialistList() {
+    this.getEmployees();
+  }
+
+  public deleteSpecialist() {
+    const email = localStorage.getItem('email');
+    if (email) {
+      this.specialistService.deleteSpecialist(email).subscribe({
+        next: () => {
+          this.logout();
+          alert('Succellfully deleted');
+          this.router.navigateByUrl('/register');
+        },
+        error: (error) => {
+          console.log(error);
+        },
+      });
+    }
+  }
+
   public logout() {
-    localStorage.setItem('email', '');
+    localStorage.removeItem('email');
     this.specialistService.currentUserSig.set(null);
   }
 }

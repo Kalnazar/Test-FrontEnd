@@ -7,9 +7,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Specialist } from '../../../shared/specialist.interface';
+import { Specialist } from '../../../shared/models/specialist.interface';
 import { SpecialistService } from '../../../shared/specialist.service';
-import { SpecialistLogin } from '../../../shared/specialistLogin.interface';
+import { SpecialistLogin } from '../../../shared/models/specialistLogin.interface';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +49,7 @@ export class LoginComponent {
               this.specialistService.currentUserSig.set(response);
             },
             error: (error) => {
-              console.error(error);
+              alert(error);
             },
           });
         this.router.navigateByUrl('/');

@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SpecialistService } from '../../../shared/specialist.service';
-import { Specialist } from '../../../shared/specialist.interface';
+import { SpecialistRegister } from '../../../shared/models/specialistRegister.interface';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +35,7 @@ export class RegisterComponent {
 
   submitForm() {
     const formValue = this.registerForm.getRawValue();
-    const specialistToSave: Specialist = {
+    const specialistToSave: SpecialistRegister = {
       fullName: formValue.sendFullName!,
       email: formValue.senderEmail!,
       dateOfBirth: null,

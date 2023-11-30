@@ -23,6 +23,12 @@
           Edit
         </button>
         <button
+          class="btn btn-outline-danger me-2"
+          (click)="$event.preventDefault(); deleteSpecialist()"
+        >
+          Delete
+        </button>
+        <button
           class="btn btn-outline-secondary"
           type="submit"
           (click)="logout()"
@@ -33,7 +39,9 @@
     </div>
   </div>
   <!-- Specialist Update Modal -->
-  <app-specialist-edit></app-specialist-edit>
+  <app-specialist-edit
+    (specialistUpdated)="refreshSpecialistList()"
+  ></app-specialist-edit>
 </nav>
 
 <div class="container">

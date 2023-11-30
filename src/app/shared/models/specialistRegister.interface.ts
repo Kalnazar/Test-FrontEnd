@@ -1,4 +1,4 @@
-export interface Specialist {
+export interface SpecialistRegister {
   fullName: string;
   email: string;
   dateOfBirth: Date | null;
