@@ -18,6 +18,7 @@ import { SpecialistService } from '../../shared/specialist.service';
 })
 export class SpecialistEditComponent {
   @Output() specialistUpdated = new EventEmitter<void>();
+  skillsList = ['Angular', 'Spring Boot', '.NET', 'UI/UX Design', 'SOLID'];
 
   public editSpecialist?: Specialist;
   public editForm = new FormGroup({
@@ -27,6 +28,7 @@ export class SpecialistEditComponent {
     senderOccupation: new FormControl(''),
     senderPhoneNumber: new FormControl(''),
     senderLocation: new FormControl(''),
+    professionalSkills: new FormControl([]),
   });
 
   constructor(private specialistService: SpecialistService) {
@@ -63,6 +65,10 @@ export class SpecialistEditComponent {
 
   submitForm() {
     const formValue = this.editForm.getRawValue();
+    const combinedSkills = [
+      ...(this.editSpecialist?.professionalSkills ?? []),
+      ...(formValue.professionalSkills ?? []),
+    ];
     const specialistToSave: Specialist = {
       id: this.editSpecialist!.id,
       fullName: formValue.senderFullName!,
@@ -71,7 +77,7 @@ export class SpecialistEditComponent {
       location: formValue.senderLocation,
       education: formValue.senderEducation!,
       occupation: formValue.senderOccupation ?? null,
-      professionalSkills: this.editSpecialist!.professionalSkills,
+      professionalSkills: combinedSkills,
       phoneNumber: formValue.senderPhoneNumber ?? null,
       password: this.editSpecialist!.password,
     };

@@ -74,6 +74,18 @@
               formControlName="senderPhoneNumber"
             />
           </div>
+          <div class="form-group">
+            <label for="professionalSkills">Professional Skills:</label>
+            <select
+              multiple="multiple"
+              formControlName="professionalSkills"
+              class="form-control"
+            >
+              <option *ngFor="let skill of skillsList" [value]="skill">
+                {{ skill }}
+              </option>
+            </select>
+          </div>
           <div class="form-group d-flex align-items-center mt-3">
             <button
               type="submit"

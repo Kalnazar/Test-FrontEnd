@@ -27,6 +27,12 @@
                 specialist?.dateOfBirth | date : "longDate"
               }}</span>
             </p>
+            <p class="detail-item">
+              <span class="detail-label">Full age: </span>
+              <span class="detail-value">{{
+                calculateAge(specialist!.dateOfBirth)
+              }}</span>
+            </p>
             }
             <p class="detail-item">
               <span class="detail-label">Education: </span>
